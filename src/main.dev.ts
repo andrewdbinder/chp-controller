@@ -139,8 +139,18 @@ app.on('activate', () => {
 // IPC Events
 
 ipcMain.on(channels.APP_INFO, (event) => {
-  event.sender.send(channels.APP_INFO, {
-    appName: app.getName(),
-    appVersion: app.getVersion(),
-  });
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.DEBUG_PROD === 'true'
+  ) {
+    event.sender.send(channels.APP_INFO, {
+      appName: 'CHP Lighting Controller',
+      appVersion: 'DEVELOPMENT',
+    });
+  } else {
+    event.sender.send(channels.APP_INFO, {
+      appName: app.getName(),
+      appVersion: app.getVersion(),
+    });
+  }
 });
