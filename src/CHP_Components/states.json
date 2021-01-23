@@ -1,0 +1,389 @@
+{
+  "code1": {
+    "Title": "Code 1",
+    "CCommand": "Code1",
+    "ActiveVariant": "warning",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "z",
+        "CCommand": "Code1::OFF"
+      },
+      {
+        "ProperName": "Rear Amber",
+        "ShortName": "R AMB",
+        "SerialCommand": "1",
+        "CCommand": "Code1::REAR_AMBER"
+      },
+      {
+        "ProperName": "Forward Cutoff",
+        "ShortName": "F CUT",
+        "SerialCommand": "q",
+        "CCommand": "Code1::FORWARD_CUTOFF"
+      },
+      {
+        "ProperName": "Amber Only",
+        "ShortName": "A ONLY",
+        "SerialCommand": "a",
+        "CCommand": "Code1::AMBER_ONLY"
+      },
+      {
+        "ProperName": "Caltrans",
+        "ShortName": "CALTRANS",
+        "SerialCommand": "!",
+        "CCommand": "Code1::CALTRANS"
+      },
+      {
+        "ProperName": "PCSO Rear",
+        "ShortName": "PCSO",
+        "SerialCommand": "Q",
+        "CCommand": "Code1::PCSO"
+      }
+    ]
+  },
+  "code2": {
+    "Title": "Code 2",
+    "CCommand": "Code2",
+    "ActiveVariant": "danger",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "s",
+        "CCommand": "Code2::OFF"
+      },
+      {
+        "ProperName": "Forward Red",
+        "ShortName": "F-RED",
+        "SerialCommand": "2",
+        "CCommand": "Code2::FORWARD_RED"
+      },
+      {
+        "ProperName": "Forward Red + Wig Wag",
+        "ShortName": "F-RED+WW",
+        "SerialCommand": "w",
+        "CCommand": "Code2::FORWARD_RED_WW"
+      }
+    ]
+  },
+  "code3": {
+    "Title": "Code 3",
+    "CCommand": "Code3",
+    "ActiveVariant": "primary",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "x",
+        "CCommand": "Code3::OFF"
+      },
+      {
+        "ProperName": "Code 3",
+        "ShortName": "CODE 3",
+        "SerialCommand": "3",
+        "CCommand": "Code3::CODE_3"
+      },
+      {
+        "ProperName": "Code 3 - Wig Wag",
+        "ShortName": "C3-WW",
+        "SerialCommand": "e",
+        "CCommand": "Code3::CODE_3_WW"
+      },
+      {
+        "ProperName": "Code 3 - Wig Wag & Amber",
+        "ShortName": "C3-WW&AM",
+        "SerialCommand": "d",
+        "CCommand": "Code3::CODE_3_WW_AM"
+      },
+      {
+        "ProperName": "Code 3 - Park Kill",
+        "ShortName": "C3-PK",
+        "SerialCommand": "c",
+        "CCommand": "Code3::CODE_3_PK"
+      },
+      {
+        "ProperName": "Code 3 (Next Gen)",
+        "ShortName": "CODE 3 NG",
+        "SerialCommand": "#",
+        "CCommand": "Code3::CODE_3_NEW_YELP"
+      }
+    ]
+  },
+  "traffic_advisor": {
+    "Title": "Traffic Advisor",
+    "CCommand": "TrafficAdvisor",
+    "ActiveVariant": "warning",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "h",
+        "CCommand": "OFF"
+      },
+      {
+        "ProperName": "Left",
+        "ShortName": "LEFT",
+        "SerialCommand": "j",
+        "CCommand": "LEFT"
+      },
+      {
+        "ProperName": "Split",
+        "ShortName": "SPLIT",
+        "SerialCommand": "k",
+        "CCommand": "SPLIT"
+      },
+      {
+        "ProperName": "Right",
+        "ShortName": "RIGHT",
+        "SerialCommand": "l",
+        "CCommand": "RIGHT"
+      }
+    ]
+  },
+  "con_siren": {
+    "Title": "Continuous Siren",
+    "ActiveVariant": "danger",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "b",
+        "CCommand": "OFF"
+      },
+      {
+        "ProperName": "Wail",
+        "ShortName": "WAIL",
+        "SerialCommand": "n",
+        "CCommand": "WAIL"
+      },
+      {
+        "ProperName": "Yelp",
+        "ShortName": "YELP",
+        "SerialCommand": "m",
+        "CCommand": "YELP"
+      }
+    ]
+  },
+  "int_siren": {
+    "Title": "Continuous Siren",
+    "ActiveVariant": "primary",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": ",",
+        "CCommand": "IntermittentSiren::OFF"
+      },
+      {
+        "ProperName": "Air Horn",
+        "ShortName": "AIR HORN",
+        "SerialCommand": ".",
+        "CCommand": "IntermittentSiren::AIR_HORN"
+      },
+      {
+        "ProperName": "Manual",
+        "ShortName": "MANUAL",
+        "SerialCommand": "/",
+        "CCommand": "IntermittentSiren::MANUAL"
+      }
+    ]
+  },
+  "scene": {
+    "ActiveVariant": "light",
+    "d_spot": {
+      "states": [
+        {
+          "ProperName": "Off",
+          "ShortName": "D SPOT OFF",
+          "SerialCommand": "$",
+          "CCommand": false
+        },
+        {
+          "ProperName": "On",
+          "ShortName": "D SPOT ON",
+          "SerialCommand": "4",
+          "CCommand": true
+        }
+      ]
+    },
+    "p_spot": {
+      "states": [
+        {
+          "ProperName": "Off",
+          "ShortName": "P SPOT OFF",
+          "SerialCommand": "%",
+          "CCommand": false
+        },
+        {
+          "ProperName": "On",
+          "ShortName": "P SPOT ON",
+          "SerialCommand": "5",
+          "CCommand": true
+        }
+      ]
+    },
+    "d_alley": {
+      "states": [
+        {
+          "ProperName": "Off",
+          "ShortName": "D ALLEY OFF",
+          "SerialCommand": "^",
+          "CCommand": false
+        },
+        {
+          "ProperName": "On",
+          "ShortName": "D ALLEY ON",
+          "SerialCommand": "6",
+          "CCommand": true
+        }
+      ]
+    },
+    "p_alley": {
+      "states": [
+        {
+          "ProperName": "Off",
+          "ShortName": "P ALLEY OFF",
+          "SerialCommand": "*",
+          "CCommand": false
+        },
+        {
+          "ProperName": "On",
+          "ShortName": "P ALLEY ON",
+          "SerialCommand": "8",
+          "CCommand": true
+        }
+      ]
+    },
+    "takedown": {
+      "states": [
+        {
+          "ProperName": "Off",
+          "ShortName": "TAKEDOWN OFF",
+          "SerialCommand": "&",
+          "CCommand": false
+        },
+        {
+          "ProperName": "On",
+          "ShortName": "TAKEDOWN ON",
+          "SerialCommand": "7",
+          "CCommand": true
+        }
+      ]
+    }
+  },
+  "indicators": {
+    "Title": "Indicators",
+    "ActiveVariant": "warning",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "-",
+        "CCommand": "OFF"
+      },
+      {
+        "ProperName": "Left",
+        "ShortName": "TURN LEFT",
+        "SerialCommand": "[",
+        "CCommand": "TURN_LEFT"
+      },
+      {
+        "ProperName": "Hazard",
+        "ShortName": "HAZARD",
+        "SerialCommand": "=",
+        "CCommand": "HAZARD"
+      },
+      {
+        "ProperName": "Right",
+        "ShortName": "TURN RIGHT",
+        "SerialCommand": "]",
+        "CCommand": "TURN_RIGHT"
+      }
+    ]
+  },
+  "transmission": {
+    "Title": "Transmission",
+    "ActiveVariant": "primary",
+    "states": [
+      {
+        "ProperName": "Park",
+        "ShortName": "P",
+        "SerialCommand": "p",
+        "CCommand": "PARK"
+      },
+      {
+        "ProperName": "Reverse",
+        "ShortName": "R",
+        "SerialCommand": "o",
+        "CCommand": "REVERSE"
+      },
+      {
+        "ProperName": "Drive",
+        "ShortName": "D",
+        "SerialCommand": "i",
+        "CCommand": "DRIVE"
+      }
+    ]
+  },
+  "brights": {
+    "Title": "Brights",
+    "ActiveVariant": "primary",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "T",
+        "CCommand": false
+      },
+      {
+        "ProperName": "On",
+        "ShortName": "ON",
+        "SerialCommand": "U",
+        "CCommand": true
+      }
+    ]
+  },
+  "brakes": {
+    "Title": "Brakes",
+    "ActiveVariant": "primary",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "V",
+        "CCommand": false
+      },
+      {
+        "ProperName": "On",
+        "ShortName": "ON",
+        "SerialCommand": "v",
+        "CCommand": true
+      }
+    ]
+  },
+  "headlights": {
+    "Title": "Headlights",
+    "ActiveVariant": "primary",
+    "states": [
+      {
+        "ProperName": "Off",
+        "ShortName": "OFF",
+        "SerialCommand": "t",
+        "CCommand": "OFF"
+      },
+      {
+        "ProperName": "Park",
+        "ShortName": "PARK",
+        "SerialCommand": "y",
+        "CCommand": "PARK"
+      },
+      {
+        "ProperName": "Headlights",
+        "ShortName": "ON",
+        "SerialCommand": "u",
+        "CCommand": "ON"
+      }
+    ]
+  }
+}
