@@ -9,7 +9,12 @@ import icon from '../../assets/icon.svg';
 const { ipcRenderer } = window.require('electron');
 const { channels } = require('./channels.js');
 
-class Footer extends React.Component<any, any> {
+type FooterState = {
+  appName: string;
+  appVersion: string;
+};
+
+class Footer extends React.Component<any, FooterState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -22,7 +27,7 @@ class Footer extends React.Component<any, any> {
 
   componentDidMount() {
     ipcRenderer.send(channels.APP_INFO);
-    ipcRenderer.once(channels.APP_INFO, (event, arg) => {
+    ipcRenderer.once(channels.APP_INFO, (event, arg: FooterState) => {
       const { appName, appVersion } = arg;
       this.setState({ appName, appVersion });
     });
@@ -49,7 +54,7 @@ class Footer extends React.Component<any, any> {
             />{' '}
           </Navbar.Brand>
           <Navbar.Text>
-            {appName} {appVersion}
+            {appName} v{appVersion}
           </Navbar.Text>
         </Col>
 
