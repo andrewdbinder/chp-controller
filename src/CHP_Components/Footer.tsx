@@ -49,7 +49,7 @@ class Footer extends React.Component<any, any> {
             />{' '}
           </Navbar.Brand>
           <Navbar.Text>
-            {appName} v{appVersion}
+            {appName} {appVersion}
           </Navbar.Text>
         </Col>
 
