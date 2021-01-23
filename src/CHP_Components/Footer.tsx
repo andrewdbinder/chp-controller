@@ -53,7 +53,7 @@ class Footer extends React.Component<any, any> {
           </Navbar.Text>
         </Col>
 
-        <Col>
+        <Col xs={2}>
           <Navbar.Text>abinder.dev</Navbar.Text>
         </Col>
 
