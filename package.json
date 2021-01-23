@@ -87,7 +87,8 @@
     "publish": {
       "provider": "github",
       "owner": "andrewdbinder",
-      "repo": "chp-lighting-controller"
+      "repo": "chp-lighting-controller",
+      "token": ""
     }
   },
   "repository": {
