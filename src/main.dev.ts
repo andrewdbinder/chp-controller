@@ -70,6 +70,7 @@ const createWindow = async () => {
   };
 
   mainWindow = new BrowserWindow({
+    backgroundColor: '#F7C136',
     show: false,
     width: 1024,
     height: 768,
