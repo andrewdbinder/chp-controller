@@ -73,14 +73,17 @@ const createWindow = async () => {
     show: false,
     width: 1024,
     height: 768,
+    minWidth: 1024,
+    minHeight: 768,
     icon: getAssetPath('icon.ico'),
     webPreferences: {
       nodeIntegration: true,
-      // devTools: false,
+      // devTools: true,
     },
   });
 
-  mainWindow.setMenuBarVisibility(false);
+  // mainWindow.webContents.openDevTools();
+  // mainWindow.setMenuBarVisibility(false);
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 

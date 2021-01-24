@@ -27,7 +27,7 @@ class Footer extends React.Component<any, FooterState> {
 
   componentDidMount() {
     ipcRenderer.send(channels.APP_INFO);
-    ipcRenderer.once(channels.APP_INFO, (event, arg: FooterState) => {
+    ipcRenderer.once(channels.APP_INFO, (_event: any, arg: FooterState) => {
       const { appName, appVersion } = arg;
       this.setState({ appName, appVersion });
     });
@@ -43,7 +43,7 @@ class Footer extends React.Component<any, FooterState> {
         variant="dark"
         expand="lg"
       >
-        <Col className="text-left">
+        <Col className="text-left" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <Navbar.Brand href="#home">
             <img
               alt=""
@@ -53,7 +53,7 @@ class Footer extends React.Component<any, FooterState> {
               className="d-inline-block align-top"
             />{' '}
           </Navbar.Brand>
-          <Navbar.Text>
+          <Navbar.Text className="d-inline-block align-top">
             {appName} v{appVersion}
           </Navbar.Text>
         </Col>
@@ -62,7 +62,7 @@ class Footer extends React.Component<any, FooterState> {
           <Navbar.Text>abinder.dev</Navbar.Text>
         </Col>
 
-        <Col className="text-right">
+        <Col className="text-right" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <Button variant="danger" className="ml-auto">
             Disconnected
           </Button>
