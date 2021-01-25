@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import App from './App';
 import './App.global.css';
 
-import icon from '../assets/icon.png';
+import icon from '../assets/icon.svg';
 
 const customTitlebar = require('custom-electron-titlebar');
 
