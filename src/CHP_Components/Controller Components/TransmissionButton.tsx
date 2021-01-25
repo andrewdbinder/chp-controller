@@ -20,7 +20,7 @@ type TransmissionButtonPropType = {
   properties: TransmissionButtonPropsObject;
   state: string;
   enabled: boolean;
-  // className: string;
+  className: string;
   // activeVariant: string;
   // text: string;
   StateChange: any;
@@ -46,7 +46,7 @@ class TransmissionButton extends React.Component<
     const { state, properties } = this.props;
 
     if (prevProps.state !== state) {
-      for (let c = 0; c < properties.states.length; c++) {
+      for (let c = 0; c < properties.states.length; c += 1) {
         if (properties.states[c].CCommand === state) {
           this.setState({
             currentState: this.props.properties.states[c],
@@ -63,10 +63,10 @@ class TransmissionButton extends React.Component<
   }
 
   render() {
-    const { enabled, properties, state } = this.props;
+    const { enabled, properties, state, className } = this.props;
 
     return (
-      <ButtonGroup className="w-100 h-50">
+      <ButtonGroup className={className}>
         {properties.states.map((gear, index) => (
           <Button
             key={String(index)}

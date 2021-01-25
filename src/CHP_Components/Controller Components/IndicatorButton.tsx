@@ -18,6 +18,7 @@ type IndicatorButtonPropsObject = {
 
 type IndicatorButtonPropType = {
   properties: IndicatorButtonPropsObject;
+  className: string;
   state: string;
   enabled: boolean;
   StateChange: any;
@@ -69,10 +70,10 @@ class IndicatorButton extends React.Component<
   }
 
   render() {
-    const { enabled, properties, state } = this.props;
+    const { enabled, properties, state, className } = this.props;
 
     return (
-      <ButtonGroup className="w-100 h-50">
+      <ButtonGroup className={className}>
         {properties.states.slice(1).map((Indicator, index) => (
           <Button
             key={String(index)}
