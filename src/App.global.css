@@ -56,7 +56,18 @@ body {
 }
 
 .controller {
-  height: calc(100vh - 56px);
+  height: calc(92vh - 30px);
+  max-height: 1000px;
+
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.controllerparent {
+  min-height: calc(100vh - 30px);
+
+  display: flex;
+  align-items: center;
 }
 
 .footer {

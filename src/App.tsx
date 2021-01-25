@@ -36,7 +36,7 @@ class MainController extends React.Component<any, any> {
 
   render() {
     return (
-      <Container className="mt-2 controller">
+      <Container className="controller">
         <Row style={{ height: '25%' }}>
           <Col>
             <p className="col-form-label">Code 1</p>
@@ -176,12 +176,13 @@ class MainController extends React.Component<any, any> {
             </Button>
           </Col>
         </Row>
-        <Row style={{ height: '25%' }}>
+        <Row style={{ height: '12.5%' }}>
           <Col>
             <TransmissionButton
               properties={CHP_States.transmission}
               state="PARK"
               enabled
+              className="w-100 h-100"
               StateChange={MainController.StateChange}
             />
           </Col>
@@ -190,7 +191,7 @@ class MainController extends React.Component<any, any> {
               properties={CHP_States.headlights}
               state="OFF"
               enabled
-              className="w-100 h-50"
+              className="w-100 h-100"
               StateChange={MainController.StateChange}
             />
           </Col>
@@ -199,7 +200,7 @@ class MainController extends React.Component<any, any> {
               properties={CHP_States.brights}
               state={false}
               enabled
-              className="w-100 h-50"
+              className="w-100 h-100"
               activeVariant="primary"
               StateChange={MainController.StateChange}
             />
@@ -209,13 +210,14 @@ class MainController extends React.Component<any, any> {
               properties={CHP_States.brakes}
               state={false}
               enabled
-              className="w-100 h-50"
+              className="w-100 h-100"
               activeVariant="primary"
               StateChange={MainController.StateChange}
             />
           </Col>
           <Col>
             <IndicatorButton
+              className="w-100 h-100"
               state="OFF"
               properties={CHP_States.indicators}
               StateChange={MainController.StateChange}
@@ -238,7 +240,7 @@ class Hello extends React.Component<any, any> {
 
   render() {
     return (
-      <Container>
+      <Container className="controllerparent">
         <MainController />
         <Footer />
       </Container>
