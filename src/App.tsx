@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
 
 import Footer from './CHP_Components/Footer';
 import CodeButton from './CHP_Components/Controller Components/CodeButton';
@@ -21,15 +23,13 @@ import * as CHP_States from './CHP_Components/states.json';
 // import { channels } from './CHP_Components/constants';
 // import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from 'react-bootstrap/Button';
 
 class MainController extends React.Component<any, any> {
   static StateChange(command: string) {
     console.log(command);
   }
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {};
   }
@@ -66,7 +66,7 @@ class MainController extends React.Component<any, any> {
             />
           </Col>
         </Row>
-        <Row style={{height: "25%"}}>
+        <Row style={{ height: '25%' }}>
           <Col>
             <p className="col-form-label">Siren</p>
             <SirenButton
@@ -96,7 +96,7 @@ class MainController extends React.Component<any, any> {
             />
           </Col>
         </Row>
-        <Row style={{height: "25%"}}>
+        <Row style={{ height: '25%' }}>
           <Col>
             <p className="col-form-label">Spotlights</p>
             <ButtonGroup className="w-50 h-100" size="md">
