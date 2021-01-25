@@ -54,7 +54,8 @@ class Footer extends React.Component<any, FooterState> {
             />{' '}
           </Navbar.Brand>
           <Navbar.Text className="d-inline-block align-top">
-            {appName} v{appVersion}
+            {/* {appName} v{appVersion} */}
+            {appVersion}
           </Navbar.Text>
         </Col>
 
