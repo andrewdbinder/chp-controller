@@ -76,9 +76,11 @@ const createWindow = async () => {
     height: 768,
     minWidth: 1024,
     minHeight: 768,
+    frame: false,
     icon: getAssetPath('icon.ico'),
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
       // devTools: true,
     },
   });
