@@ -71,6 +71,10 @@ li {
   width: 100%;
 }
 
+.controller {
+  height: calc(100vh - 56px);
+}
+
 .footer {
   font-size: .9rem;
   vertical-align: center;

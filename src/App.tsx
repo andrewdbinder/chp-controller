@@ -36,7 +36,7 @@ class MainController extends React.Component<any, any> {
 
   render() {
     return (
-      <Container className="align-top" style={{ height: '90vh' }}>
+      <Container className="mt-2 controller">
         <Row style={{ height: '25%' }}>
           <Col>
             <p className="col-form-label">Code 1</p>
