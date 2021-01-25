@@ -57,7 +57,7 @@ body {
 
 .controller {
   height: calc(92vh - 30px);
-  max-height: 1000px;
+  max-height: 900px;
 
   margin-top: 4vh;
   margin-bottom: 4vh;
