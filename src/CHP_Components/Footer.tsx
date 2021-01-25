@@ -60,7 +60,7 @@ class Footer extends React.Component<any, FooterState> {
         </Col>
 
         <Col xs={2}>
-          <Navbar.Text style={{'font-size': '1.1rem'}}>DEREK IS SCARY</Navbar.Text>
+          <Navbar.Text>abinder.dev</Navbar.Text>
         </Col>
 
         <Col className="text-right" style={{ paddingLeft: 0, paddingRight: 0 }}>
