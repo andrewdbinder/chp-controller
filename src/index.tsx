@@ -8,8 +8,6 @@ import icon from '../assets/icon.png';
 
 const customTitlebar = require('custom-electron-titlebar');
 
-console.log(`${JSON.stringify(process.env)}`);
-
 // TODO: implement different color titlebar for unpackaged mode
 // const RESOURCES_PATH = app.isPackaged
 //   ? path.join(process.resourcesPath, 'resources')
