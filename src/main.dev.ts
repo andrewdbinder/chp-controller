@@ -11,10 +11,12 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+
+const ChpLightsModule = require('@andrewdbinder/chp-lights-module');
 
 const { channels } = require('./CHP_Components/channels.js');
 
@@ -102,6 +104,14 @@ const createWindow = async () => {
       mainWindow.show();
       mainWindow.focus();
     }
+
+    const message = ChpLightsModule('hello');
+    const options = {
+      type: 'info',
+      title: 'Hello World Result',
+      message,
+    };
+    dialog.showMessageBox(null, options);
   });
 
   mainWindow.on('closed', () => {

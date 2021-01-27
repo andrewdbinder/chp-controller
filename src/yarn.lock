@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@andrewdbinder/chp-lights-module@1.0.5":
+  version "1.0.5"
+  resolved "https://npm.pkg.github.com/download/@andrewdbinder/chp-lights-module/1.0.5/1bde21e83e88e25a9f9cd6d262c0073a8b29865bc0ee45ab5f0d04e8c05d89ae#378a0141ae44ec49720340e8da70a5a6b2e55f6b"
+  integrity sha512-w8mVd1d/zVLJJhI2AexKahvGwEl6OcdVDW18ZNKN9UgHHaBkoodTHxXE3Lgilsqc+sz5BDC3Ot1uIekgDM00ug==
+  dependencies:
+    node-addon-api "^1.1.0"
+
 "@babel/runtime@^7.12.1", "@babel/runtime@^7.4.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.7":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
@@ -126,6 +133,11 @@ loose-envify@^1.0.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+node-addon-api@^1.1.0:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-1.7.2.tgz#3df30b95720b53c24e59948b49532b662444f54d"
+  integrity sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==
 
 object-assign@^4.1.1:
   version "4.1.1"
