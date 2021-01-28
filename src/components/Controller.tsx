@@ -95,11 +95,11 @@ class MainController extends React.Component<any, ControllerState> {
   }
 
   componentDidMount() {
-    // ipcRenderer.send(channels.CHP_STATE_CHANGE, ')');
     ipcRenderer.on(channels.GET_CHP_STATE, (event, arg) => {
       const { CHPState } = arg;
       this.setState({ CHPState });
     });
+    ipcRenderer.send(channels.GET_CHP_STATE);
   }
 
   componentWillUnmount() {
