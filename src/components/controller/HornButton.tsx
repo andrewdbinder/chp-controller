@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import horn from '../../../assets/controller-icons/horn.svg';
 
 type HornButtonPropType = {
   enabled: boolean;
@@ -42,8 +43,8 @@ class HornButton extends React.Component<
   }
 
   render() {
-    const { enabled, className } = this.props;
     const { variant } = this.state;
+    const { enabled, className } = this.props;
 
     return (
       <Button
@@ -57,7 +58,7 @@ class HornButton extends React.Component<
         }}
         disabled={!enabled}
       >
-        Horn
+        <img src={horn} alt="Horn" className="filter-white" width="40%" />
       </Button>
     );
   }

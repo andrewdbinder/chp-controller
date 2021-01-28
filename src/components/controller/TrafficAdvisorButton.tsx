@@ -2,6 +2,10 @@ import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
+import Split from '../../../assets/controller-icons/arrow-split.svg';
+import Left from '../../../assets/controller-icons/arrow-left.svg';
+import Right from '../../../assets/controller-icons/arrow-right.svg';
+
 type TrafficAdvisorButtonPropsStateObject = {
   ProperName: string;
   ShortName: string;
@@ -32,6 +36,19 @@ class TrafficAdvisorButton extends React.Component<
   TrafficAdvisorButtonPropType,
   TrafficAdvisorButtonStateType
 > {
+  static GetImage(text: string) {
+    switch (text) {
+      case 'Split':
+        return Split;
+      case 'Left':
+        return Left;
+      case 'Right':
+        return Right;
+      default:
+        return null;
+    }
+  }
+
   constructor(props: TrafficAdvisorButtonPropType) {
     super(props);
     const { properties } = this.props;
@@ -96,7 +113,12 @@ class TrafficAdvisorButton extends React.Component<
             }}
             disabled={!enabled}
           >
-            <p className="button-text">{TAState.ProperName}</p>
+            <img
+              src={TrafficAdvisorButton.GetImage(TAState.ProperName)}
+              alt={TAState.ProperName}
+              className={state === TAState.CCommand ? '' : 'filter-white'}
+              height="40%"
+            />
           </Button>
         ))}
       </ButtonGroup>
