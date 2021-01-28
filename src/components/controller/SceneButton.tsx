@@ -1,53 +1,54 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
-type SirenButtonPropsStateObject = {
+type SceneButtonPropsStateObject = {
   ProperName: string;
   ShortName: string;
   SerialCommand: string;
-  CCommand: string;
+  CCommand: boolean;
 };
 
-type SirenButtonPropsObject = {
-  Title: string;
-  CCommand: string;
-  ActiveVariant: string;
-  states: SirenButtonPropsStateObject[];
+type SceneButtonPropsObject = {
+  // Title: string;
+  // CCommand: string;
+  // ActiveVariant: string;
+  states: SceneButtonPropsStateObject[];
 };
 
-type SirenButtonPropType = {
-  properties: SirenButtonPropsObject;
-  state: string;
+type SceneButtonPropType = {
+  properties: SceneButtonPropsObject;
+  state: boolean;
   enabled: boolean;
-  StateChange: any;
   className: string;
+  activeVariant: string;
+  text: string;
+  StateChange: any;
 };
 
-type SirenButtonStateType = {
-  currentState: SirenButtonPropsStateObject;
+type SceneButtonStateType = {
+  currentState: SceneButtonPropsStateObject;
 };
 
-class SirenButton extends React.Component<
-  SirenButtonPropType,
-  SirenButtonStateType
+class SceneButton extends React.Component<
+  SceneButtonPropType,
+  SceneButtonStateType
 > {
-  constructor(props: SirenButtonPropType) {
+  constructor(props: SceneButtonPropType) {
     super(props);
-
     const { properties } = this.props;
-
     this.state = {
       currentState: properties.states[0],
     };
   }
 
-  componentDidUpdate() {
-    const { currentState } = this.state;
-    const { state, properties } = this.props;
+  componentDidUpdate(prevProps: SceneButtonPropType) {
+    const { properties, state } = this.props;
 
-    if (currentState.CCommand !== state) {
-      for (let c = 0; c < properties.states.length; c++) {
+    if (prevProps.state !== state) {
+      for (let c = 0; c < properties.states.length; c += 1) {
         if (properties.states[c].CCommand === state) {
+          // TODO: Fix this
+          // eslint-disable-next-line react/no-did-update-set-state
           this.setState({
             currentState: properties.states[c],
           });
@@ -60,7 +61,7 @@ class SirenButton extends React.Component<
     const { currentState } = this.state;
     const { properties, StateChange } = this.props;
 
-    if (currentState.CCommand === properties.states[0].CCommand) {
+    if (currentState === properties.states[0]) {
       // ipcRenderer.send(
       //   channels.CHP_STATE_CHANGE,
       //   this.props.properties.states[1].SerialCommand
@@ -76,21 +77,30 @@ class SirenButton extends React.Component<
   }
 
   render() {
-    const { enabled, className, state, properties } = this.props;
-    const { currentState } = this.state;
+    const {
+      properties,
+      state,
+      enabled,
+      className,
+      activeVariant,
+      text,
+    } = this.props;
+
     return (
       <Button
         className={className}
-        variant={state === 'OFF' ? 'dark' : properties.ActiveVariant}
+        variant={
+          state === properties.states[0].CCommand ? 'dark' : activeVariant
+        }
         onClick={() => {
           this.onClick();
         }}
         disabled={!enabled}
       >
-        {currentState.ProperName}
+        {text}
       </Button>
     );
   }
 }
 
-export default SirenButton;
+export default SceneButton;

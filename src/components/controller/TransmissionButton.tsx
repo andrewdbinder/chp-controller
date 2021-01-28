@@ -36,18 +36,21 @@ class TransmissionButton extends React.Component<
 > {
   constructor(props: TransmissionButtonPropType) {
     super(props);
-    const { properties } = this.props;
+    // const { properties } = this.props;
     this.state = {
-      currentState: properties.states[0],
+      // currentState: properties.states[0],
     };
   }
 
+  /*
   componentDidUpdate(prevProps: TransmissionButtonPropType) {
     const { state, properties } = this.props;
 
     if (prevProps.state !== state) {
       for (let c = 0; c < properties.states.length; c += 1) {
         if (properties.states[c].CCommand === state) {
+          // TODO: Fix this
+          // eslint-disable-next-line react/no-did-update-set-state
           this.setState({
             currentState: this.props.properties.states[c],
           });
@@ -55,6 +58,7 @@ class TransmissionButton extends React.Component<
       }
     }
   }
+ */
 
   onClick(stateReq: TransmissionButtonPropsStateObject) {
     const { StateChange } = this.props;

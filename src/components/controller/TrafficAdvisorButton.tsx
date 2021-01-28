@@ -41,16 +41,6 @@ class TrafficAdvisorButton extends React.Component<
   }
 
   componentDidUpdate(prevProps: TrafficAdvisorButtonPropType) {
-    /*
-    if (this.state.currentState.CCommand !== this.props.state) {
-      for (let c = 0; c < this.props.properties.states.length; c++) {
-        if (this.props.properties.states[c].CCommand === this.props.state) {
-          this.setState({
-            currentState: this.props.properties.states[c],
-          });
-        }
-      }
-    } */
     const { state } = this.props;
 
     if (state !== prevProps.state) {
@@ -62,10 +52,14 @@ class TrafficAdvisorButton extends React.Component<
     const { currentState } = this.state;
     const { properties, state } = this.props;
 
-    if (currentState.CCommand !== `${properties.CCommand}::${state}`) {
+    if (
+      `${properties.CCommand}::${currentState.CCommand}` !==
+      `${properties.CCommand}::${state}`
+    ) {
       for (let c = 0; c < properties.states.length; c += 1) {
         if (
-          properties.states[c].CCommand === `${properties.CCommand}::${state}`
+          `${properties.CCommand}::${properties.states[c].CCommand}` ===
+          `${properties.CCommand}::${state}`
         ) {
           this.setState({
             currentState: properties.states[c],
@@ -80,13 +74,8 @@ class TrafficAdvisorButton extends React.Component<
     const { currentState } = this.state;
 
     if (currentState === reqState) {
-      // ipcRenderer.send(
-      //   channels.CHP_STATE_CHANGE,
-      //   this.props.properties.states[0].SerialCommand
-      // );
       StateChange(properties.states[0].SerialCommand);
     } else {
-      // ipcRenderer.send(channels.CHP_STATE_CHANGE, reqState.SerialCommand);
       StateChange(reqState.SerialCommand);
     }
   }

@@ -11,7 +11,10 @@ type HornButtonStateType = {
   variant: string;
 };
 
-class HornButton extends React.Component< HornButtonPropType, HornButtonStateType> {
+class HornButton extends React.Component<
+  HornButtonPropType,
+  HornButtonStateType
+> {
   constructor(props: HornButtonPropType) {
     super(props);
     this.state = {

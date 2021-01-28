@@ -64,8 +64,8 @@ class Footer extends React.Component<any, FooterState> {
         </Col>
 
         <Col className="text-right" style={{ paddingLeft: 0, paddingRight: 0 }}>
-          <Button variant="danger" className="ml-auto">
-            Disconnected
+          <Button variant="info" className="ml-auto">
+            Demo Mode
           </Button>
         </Col>
       </Navbar>
