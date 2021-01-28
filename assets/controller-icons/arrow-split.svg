@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.99 19.44">
+  <title>Arrow Split</title>
+  <g>
+    <line x1="8.41" y1="9.72" x2="29.58" y2="9.72" style="fill: none;stroke: #231f20;stroke-miterlimit: 10;stroke-width: 10px"/>
+    <polygon points="9.72 0 9.72 19.44 0 9.72 9.72 0" style="fill: #231f20"/>
+    <polygon points="28.28 0 28.28 19.44 37.99 9.72 28.28 0" style="fill: #231f20"/>
+  </g>
+</svg>
