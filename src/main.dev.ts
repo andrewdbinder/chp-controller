@@ -176,3 +176,11 @@ ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
     CHPState: state,
   });
 });
+
+ipcMain.on(channels.GET_CHP_STATE, (event, args) => {
+  // Read state and reply
+  const state = CHP.GetState();
+  event.sender.send(channels.GET_CHP_STATE, {
+    CHPState: state,
+  });
+});
