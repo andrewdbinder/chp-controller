@@ -11,14 +11,14 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 
-const ChpLightsModule = require('@andrewdbinder/chp-lights-module');
+const CHP = require('@andrewdbinder/chp-lights-module');
 
-const { channels } = require('./CHP_Components/channels.js');
+const { channels } = require('./components/channels.js');
 
 export default class AppUpdater {
   constructor() {
@@ -104,14 +104,6 @@ const createWindow = async () => {
       mainWindow.show();
       mainWindow.focus();
     }
-
-    const message = ChpLightsModule('hello');
-    const options = {
-      type: 'info',
-      title: 'Hello World Result',
-      message,
-    };
-    dialog.showMessageBox(null, options);
   });
 
   mainWindow.on('closed', () => {
@@ -169,4 +161,17 @@ ipcMain.on(channels.APP_INFO, (event) => {
       appVersion: app.getVersion(),
     });
   }
+});
+
+ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
+  // console.log(`Received ${args[0]}`);
+
+  // Send state command
+  CHP.ChangeState(args[0]);
+
+  // Read state and reply
+  const state = CHP.GetState();
+  event.sender.send(channels.GET_CHP_STATE, {
+    CHPState: state,
+  });
 });

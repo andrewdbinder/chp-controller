@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@andrewdbinder/chp-lights-module@1.0.5":
-  version "1.0.5"
-  resolved "https://npm.pkg.github.com/download/@andrewdbinder/chp-lights-module/1.0.5/1bde21e83e88e25a9f9cd6d262c0073a8b29865bc0ee45ab5f0d04e8c05d89ae#378a0141ae44ec49720340e8da70a5a6b2e55f6b"
-  integrity sha512-w8mVd1d/zVLJJhI2AexKahvGwEl6OcdVDW18ZNKN9UgHHaBkoodTHxXE3Lgilsqc+sz5BDC3Ot1uIekgDM00ug==
+"@andrewdbinder/chp-lights-module@1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@andrewdbinder/chp-lights-module/1.1.0/ee89ad629c886552aeda8490d8871002d89e609e7aba75566e9b30ad8f37cd2f#5ce90b71c02c94933b6685bca41d9eb63c603dbd"
+  integrity sha512-8mU/n3UXoHZ0EqokCb7HG4qlyzbFa0ajrLBCbMUVJfHaLhEgzpp9W/QJ4ROh19G1H0tpl2w2WBbo5uC/JF0ZVg==
   dependencies:
     node-addon-api "^1.1.0"
 
