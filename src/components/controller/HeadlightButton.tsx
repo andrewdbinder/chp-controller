@@ -47,6 +47,8 @@ class HeadlightButton extends React.Component<
     if (prevProps.state !== state) {
       for (let c = 0; c < properties.states.length; c += 1) {
         if (properties.states[c].CCommand === state) {
+          // TODO: Fix this
+          // eslint-disable-next-line react/no-did-update-set-state
           this.setState({
             currentState: properties.states[c],
           });

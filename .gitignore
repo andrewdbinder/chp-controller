@@ -49,4 +49,4 @@ npm-debug.log.*
 *.sass.d.ts
 *.scss.d.ts
 
-src/CHP_Components/Controller.js
+src/components/Controller.js.bkp
