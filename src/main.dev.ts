@@ -16,7 +16,9 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 
-const { channels } = require('./CHP_Components/channels.js');
+const CHP = require('@andrewdbinder/chp-lights-module');
+
+const { channels } = require('./components/channels.js');
 
 export default class AppUpdater {
   constructor() {
@@ -160,4 +162,17 @@ ipcMain.on(channels.APP_INFO, (event) => {
       appVersion: app.getVersion(),
     });
   }
+});
+
+ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
+  // console.log(`Received ${args[0]}`);
+
+  // Send state command
+  CHP.ChangeState(args[0]);
+
+  // Read state and reply
+  const state = CHP.GetState();
+  event.sender.send(channels.GET_CHP_STATE, {
+    CHPState: state,
+  });
 });
