@@ -42,18 +42,10 @@ class SceneButton extends React.Component<
   }
 
   componentDidUpdate(prevProps: SceneButtonPropType) {
-    const { properties, state } = this.props;
+    const { state } = this.props;
 
     if (prevProps.state !== state) {
-      for (let c = 0; c < properties.states.length; c += 1) {
-        if (properties.states[c].CCommand === state) {
-          // TODO: Fix this
-          // eslint-disable-next-line react/no-did-update-set-state
-          this.setState({
-            currentState: properties.states[c],
-          });
-        }
-      }
+      this.updateState();
     }
   }
 
@@ -62,17 +54,21 @@ class SceneButton extends React.Component<
     const { properties, StateChange } = this.props;
 
     if (currentState === properties.states[0]) {
-      // ipcRenderer.send(
-      //   channels.CHP_STATE_CHANGE,
-      //   this.props.properties.states[1].SerialCommand
-      // );
       StateChange(properties.states[1].SerialCommand);
     } else {
-      // ipcRenderer.send(
-      //   channels.CHP_STATE_CHANGE,
-      //   this.props.properties.states[0].SerialCommand
-      // );
       StateChange(properties.states[0].SerialCommand);
+    }
+  }
+
+  updateState() {
+    const { properties, state } = this.props;
+
+    for (let c = 0; c < properties.states.length; c += 1) {
+      if (properties.states[c].CCommand === state) {
+        this.setState({
+          currentState: properties.states[c],
+        });
+      }
     }
   }
 
