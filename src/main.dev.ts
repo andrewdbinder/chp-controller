@@ -77,6 +77,7 @@ const createWindow = async () => {
     minWidth: 1024,
     minHeight: 768,
     frame: false,
+    titleBarStyle: 'hidden',
     icon: getAssetPath('icon.ico'),
     webPreferences: {
       nodeIntegration: true,
