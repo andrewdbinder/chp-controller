@@ -2,7 +2,7 @@
 
 Electron-based user-interface to control the [chp-lighting](https://github.com/andrewdbinder/chp-lighting) library over serial connections.
 
-<img src="https://i.imgur.com/NmF2aXj.png" />
+<img src="https://i.imgur.com/NmF2aXj.png" width="100%"/>
 
 ## Setup
 
