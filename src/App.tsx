@@ -22,7 +22,6 @@ class Hello extends React.Component<any, any> {
     return (
       <Container className="controllerparent">
         <MainController />
-        <Footer />
       </Container>
     );
   }
@@ -34,6 +33,7 @@ export default function App() {
       <Switch>
         <Route path="/" component={Hello} />
       </Switch>
+      <Footer />
     </Router>
   );
 }
