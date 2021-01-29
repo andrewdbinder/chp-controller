@@ -17,8 +17,14 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 
 const CHP = require('@andrewdbinder/chp-lights-module');
+const SerialPort = require('serialport');
 
 const { channels } = require('./components/channels.js');
+
+const comPath = 'COM12';
+const port = new SerialPort(comPath, {
+  baudRate: 115200,
+});
 
 export default class AppUpdater {
   constructor() {
@@ -168,13 +174,36 @@ ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
   // console.log(`Received ${args[0]}`);
 
   // Send state command
-  CHP.ChangeState(args[0]);
+  // CHP.ChangeState(args[0]);
 
   // Read state and reply
-  const state = CHP.GetState();
-  event.sender.send(channels.GET_CHP_STATE, {
-    CHPState: state,
-  });
+  // const state = CHP.GetState();
+  // event.sender.send(channels.GET_CHP_STATE, {
+  //   CHPState: state,
+  // });
+
+  if (port.isOpen) {
+    if (args) {
+      // let result = await writeToSerial(args[0], event);
+      port.write(args[0], (error) => {
+        if (error) {
+          console.log('Error with write');
+          console.log(error);
+          event.sender.send(channels.COM_CONNECTED, {
+            status: port.isOpen,
+            port: port.path,
+          });
+        } else {
+          console.log(`Wrote ${args[0]}`);
+          CHP.ChangeState(args[0]);
+          const state = CHP.GetState();
+          event.sender.send(channels.GET_CHP_STATE, {
+            CHPState: state,
+          });
+        }
+      });
+    }
+  }
 });
 
 ipcMain.on(channels.GET_CHP_STATE, (event, args) => {
