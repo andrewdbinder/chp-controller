@@ -16,7 +16,7 @@ import HeadlightButton from './controller/HeadlightButton';
 import MomentaryToggleButtons from './controller/MomentaryButton';
 import IndicatorButton from './controller/IndicatorButton';
 
-import * as CHP_States from './states.json';
+import CHP_States from './states.json';
 import { channels } from './channels';
 
 const { ipcRenderer } = window.require('electron');
@@ -95,10 +95,13 @@ class MainController extends React.Component<any, ControllerState> {
   }
 
   componentDidMount() {
-    ipcRenderer.on(channels.GET_CHP_STATE, (event, arg) => {
-      const { CHPState } = arg;
-      this.setState({ CHPState });
-    });
+    ipcRenderer.on(
+      channels.GET_CHP_STATE,
+      (_event: any, arg: ControllerState) => {
+        const { CHPState } = arg;
+        this.setState({ CHPState });
+      }
+    );
     ipcRenderer.send(channels.GET_CHP_STATE);
   }
 
@@ -173,7 +176,7 @@ class MainController extends React.Component<any, ControllerState> {
         <Row style={{ height: '25%' }}>
           <Col>
             <p className="col-form-label">Spotlights</p>
-            <ButtonGroup className="w-50 h-100" size="md">
+            <ButtonGroup className="w-50 h-100">
               <SceneButton
                 className="h-50"
                 state={CHPState.SceneState.D_Spot_S}
@@ -196,7 +199,7 @@ class MainController extends React.Component<any, ControllerState> {
           </Col>
           <Col>
             <p className="col-form-label">Scene Lighting</p>
-            <ButtonGroup className="w-100 h-100" size="md">
+            <ButtonGroup className="w-100 h-100">
               <SceneButton
                 className="h-50"
                 state={CHPState.SceneState.D_Alley_S}
@@ -234,27 +237,24 @@ class MainController extends React.Component<any, ControllerState> {
               onClick={() => {
                 MainController.StateChange('(');
               }}
-              enabled
             >
               Scene Off
             </Button>
             <Button
               className="mx-2 w-25 h-50"
               variant="dark"
-              onClick={(e) => {
+              onClick={() => {
                 MainController.StateChange('0');
               }}
-              enabled
             >
               L/S Off
             </Button>
             <Button
               className="mx-2 w-25 h-50"
               variant="dark"
-              onClick={(e) => {
+              onClick={() => {
                 MainController.StateChange(')');
               }}
-              enabled
             >
               Reset All
             </Button>

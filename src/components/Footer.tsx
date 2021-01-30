@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -10,7 +10,6 @@ const { ipcRenderer } = window.require('electron');
 const { channels } = require('./channels.js');
 
 type FooterState = {
-  appName: string;
   appVersion: string;
 };
 
@@ -18,7 +17,6 @@ class Footer extends React.Component<any, FooterState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      appName: '',
       appVersion: '',
     };
 
@@ -28,13 +26,13 @@ class Footer extends React.Component<any, FooterState> {
   componentDidMount() {
     ipcRenderer.send(channels.APP_INFO);
     ipcRenderer.once(channels.APP_INFO, (_event: any, arg: FooterState) => {
-      const { appName, appVersion } = arg;
-      this.setState({ appName, appVersion });
+      const { appVersion } = arg;
+      this.setState({ appVersion });
     });
   }
 
   render() {
-    const { appName, appVersion } = this.state;
+    const { appVersion } = this.state;
     return (
       <Navbar
         className="footer"
@@ -64,7 +62,12 @@ class Footer extends React.Component<any, FooterState> {
         </Col>
 
         <Col className="text-right" style={{ paddingLeft: 0, paddingRight: 0 }}>
-          <Button variant="info" className="ml-auto">
+          <Button
+            as={Link}
+            to="/settings/general"
+            variant="info"
+            className="ml-auto"
+          >
             Demo Mode
           </Button>
         </Col>

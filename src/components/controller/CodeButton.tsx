@@ -125,12 +125,12 @@ class CodeButton extends React.Component<
           disabled={!enabled}
         />
         <Dropdown.Menu align="right">
-          {properties.states.map((CodeState, index) => (
+          {properties.states.slice(1).map((CodeState, index) => (
             <Dropdown.Item
               key={String(index)}
-              active={idx === index}
+              active={idx === index + 1}
               onClick={() => {
-                this.onClick(index);
+                this.onClick(index + 1);
               }}
             >
               {CodeState.ProperName}

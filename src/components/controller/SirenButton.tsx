@@ -10,7 +10,6 @@ type SirenButtonPropsStateObject = {
 
 type SirenButtonPropsObject = {
   Title: string;
-  CCommand: string;
   ActiveVariant: string;
   states: SirenButtonPropsStateObject[];
 };

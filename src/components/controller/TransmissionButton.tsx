@@ -27,7 +27,7 @@ type TransmissionButtonPropType = {
 };
 
 type TransmissionButtonStateType = {
-  currentState: TransmissionButtonPropsStateObject;
+  // currentState: TransmissionButtonPropsStateObject;
 };
 
 class TransmissionButton extends React.Component<

@@ -1,8 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
 import MainController from './components/Controller';
+import Settings from './components/Settings';
+
 import Footer from './components/Footer';
 
 // import { channels } from './components/constants';
@@ -10,12 +12,12 @@ import Footer from './components/Footer';
 // import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 class Hello extends React.Component<any, any> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
     this.state = {};
-
-    // this.StateChange = this.StateChange.bind(this);
   }
 
   render() {
@@ -29,11 +31,12 @@ class Hello extends React.Component<any, any> {
 
 export default function App() {
   return (
-    <Router>
+    <HashRouter>
       <Switch>
-        <Route path="/" component={Hello} />
+        <Route exact path="/" component={Hello} />
+        <Route path="/settings" component={Settings} />
       </Switch>
       <Footer />
-    </Router>
+    </HashRouter>
   );
 }

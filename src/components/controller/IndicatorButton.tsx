@@ -2,6 +2,8 @@ import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
+import hazard from '../../../assets/controller-icons/hazard.svg';
+
 type IndicatorButtonPropsStateObject = {
   ProperName: string;
   ShortName: string;
@@ -87,7 +89,16 @@ class IndicatorButton extends React.Component<
             }}
             disabled={!enabled}
           >
-            {Indicator.ProperName}
+            {Indicator.ProperName !== 'Hazard' ? (
+              Indicator.ProperName
+            ) : (
+              <img
+                src={hazard}
+                alt={Indicator.ProperName}
+                className={state === 'HAZARD' ? '' : 'filter-white'}
+                height="40%"
+              />
+            )}
           </Button>
         ))}
       </ButtonGroup>

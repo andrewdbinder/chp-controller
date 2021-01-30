@@ -90,7 +90,7 @@ const createWindow = async () => {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-      // devTools: true,
+      devTools: true,
     },
   });
 
@@ -185,7 +185,7 @@ ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
   if (port.isOpen) {
     if (args) {
       // let result = await writeToSerial(args[0], event);
-      port.write(args[0], (error) => {
+      port.write(args[0], (error: any) => {
         if (error) {
           console.log('Error with write');
           console.log(error);
@@ -206,7 +206,7 @@ ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
   }
 });
 
-ipcMain.on(channels.GET_CHP_STATE, (event, args) => {
+ipcMain.on(channels.GET_CHP_STATE, (event) => {
   // Read state and reply
   const state = CHP.GetState();
   event.sender.send(channels.GET_CHP_STATE, {
