@@ -17,7 +17,7 @@ body {
   /*  #dd5789 51.77%,*/
   /*  #7a2c9e 129.35%*/
   /*);*/
-  /*font-family: 'Lato', sans-serif;*/
+  font-family: 'Lato', sans-serif;
   overflow-y: hidden;
   display: flex;
   justify-content: center;
@@ -75,6 +75,11 @@ body {
 .filter-white {
   transition: filter 0.15s ease-in-out;
   filter: invert(100%);
+}
+
+.btn {
+  transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out,
+    border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 .btn:focus {

@@ -22,7 +22,7 @@ const SerialPort = require('serialport');
 const { channels } = require('./components/channels.js');
 
 const comPath = 'COM12';
-const port = new SerialPort(comPath, {
+let port = new SerialPort(comPath, {
   baudRate: 115200,
 });
 
@@ -189,7 +189,7 @@ ipcMain.on(channels.CHP_STATE_CHANGE, (event, args) => {
         if (error) {
           console.log('Error with write');
           console.log(error);
-          event.sender.send(channels.COM_CONNECTED, {
+          event.sender.send(channels.COM_STATUS, {
             status: port.isOpen,
             port: port.path,
           });
@@ -211,5 +211,62 @@ ipcMain.on(channels.GET_CHP_STATE, (event) => {
   const state = CHP.GetState();
   event.sender.send(channels.GET_CHP_STATE, {
     CHPState: state,
+  });
+});
+
+ipcMain.on(channels.COM_STATUS, (event) => {
+  event.sender.send(channels.COM_STATUS, {
+    comStatus: port.isOpen,
+    comPort: port.path,
+  });
+});
+
+ipcMain.on(channels.COM_SCAN, async (event) => {
+  const ports = await SerialPort.list();
+  console.log('Scan request received.');
+
+  event.sender.send(channels.COM_SCAN, {
+    portList: ports,
+  });
+
+  console.log(ports);
+});
+
+ipcMain.on(channels.COM_CONNECT, async (event, args) => {
+  console.log(`Opening COM Port: ${args}`);
+
+  port = new SerialPort(args, {
+    baudRate: 115200,
+  });
+
+  port.open((err: any) => {
+    if (err) {
+      console.log(`${port.path} is still opening.`);
+    }
+  });
+
+  port.on('open', () => {
+    event.sender.send(channels.COM_STATUS, {
+      comStatus: port.isOpen,
+      comPort: port.path,
+    });
+  });
+
+  port.on('error', (err: any) => {
+    console.log('Error: ', err.message);
+    event.sender.send(channels.COM_STATUS, {
+      comStatus: port.isOpen,
+      comPort: port.path,
+    });
+  });
+});
+
+ipcMain.on(channels.COM_DISCONNECT, async (event) => {
+  console.log('Disconnecting COM Port.');
+
+  port.close();
+  event.sender.send(channels.COM_STATUS, {
+    comStatus: port.isOpen,
+    comPort: port.path,
   });
 });

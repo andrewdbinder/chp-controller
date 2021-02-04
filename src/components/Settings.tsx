@@ -17,6 +17,9 @@ import charger from '../../assets/vehicles/Dodge_Charger_2015_LB_Front.png';
 import chargerpcf from '../../assets/vehicles/Dodge_Charger_2019_PCF_Front.png';
 import crownvic from '../../assets/vehicles/Ford_CrownVic_2011_LB_Front.png';
 
+const { ipcRenderer } = window.require('electron');
+const { channels } = require('./channels.js');
+
 function TahoeCard() {
   return (
     <Card style={{ width: '30%', fontSize: '12pt' }} bg="dark">
@@ -104,8 +107,67 @@ function HelloWorld() {
 
 // eslint-disable-next-line react/prefer-stateless-function,@typescript-eslint/no-explicit-any
 class Connection extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      portScanned: false,
+      portList: [],
+      comPort: '',
+      comStatus: false,
+    };
+    this.scanPorts = this.scanPorts.bind(this);
+  }
+
+  componentDidMount(): void {
+    ipcRenderer.send(channels.COM_STATUS);
+    ipcRenderer.on(channels.COM_STATUS, (_event: any, arg: any) => {
+      const { comPort, comStatus } = arg;
+      this.setState({ comPort, comStatus });
+      console.log(arg);
+    });
+
+    this.scanPorts();
+  }
+
+  componentWillUnmount(): void {
+    // TODO: Remove only listener from this component did mount
+    // ipcRenderer.removeAllListeners(channels.COM_STATUS);
+  }
+
+  scanPorts() {
+    const { comStatus, comPort } = this.state;
+
+    if (comStatus) {
+      this.setState({ selectedPort: comPort });
+    }
+
+    this.setState({ portScanned: false });
+
+    ipcRenderer.send(channels.COM_SCAN);
+    ipcRenderer.once(channels.COM_SCAN, (_event: any, arg: any) => {
+      this.setState({ portList: arg.portList, portScanned: true });
+      console.log(arg.portList);
+    });
+  }
+
+  ConnectButton() {
+    const { comStatus, comPort } = this.state;
+
+    if (comStatus) {
+      ipcRenderer.send(channels.COM_DISCONNECT);
+    } else {
+      ipcRenderer.send(channels.COM_CONNECT, comPort);
+    }
+  }
+
   render() {
-    const ports = ['COM10', 'COM12'];
+    const {
+      portList,
+      comPort,
+      comStatus,
+      portScanned,
+      selectedPort,
+    } = this.state;
 
     return (
       <Container style={{ textAlign: 'left' }}>
@@ -117,22 +179,47 @@ class Connection extends React.Component<any, any> {
         </p>
         <Col>
           <Row>
-            <Button className="mr-2" variant="secondary">
+            <Button
+              className="mr-2"
+              variant="secondary"
+              onClick={() => {
+                this.scanPorts();
+              }}
+            >
               Scan Devices
             </Button>
+
             <Dropdown>
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                NONE
+              <Dropdown.Toggle
+                variant="secondary"
+                id="dropdown-basic"
+                disabled={!portScanned || comStatus}
+              >
+                {comPort !== '' ? comPort : `Select One`}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                {ports.length > 0 &&
+                {portList?.length > 0 &&
                   // eslint-disable-next-line react/jsx-key
-                  ports.map((port) => <Dropdown.Item>{port}</Dropdown.Item>)}
+                  portList?.map((port: any, index: number) => {
+                    return (
+                      <Dropdown.Item
+                        key={String(index)}
+                        active={comPort === port.path}
+                      >
+                        {port.path}
+                      </Dropdown.Item>
+                    );
+                  })}
               </Dropdown.Menu>
             </Dropdown>
-            <Button className="ml-2" variant="primary" disabled>
-              Connect
+            <Button
+              className="ml-2"
+              variant={comStatus ? 'danger' : 'primary'}
+              onClick={() => this.ConnectButton()}
+              disabled={selectedPort === '' && !comStatus}
+            >
+              {comStatus ? 'Disconnect' : 'Connect'}
             </Button>
             <Button disabled className="ml-2">
               Set as Default
