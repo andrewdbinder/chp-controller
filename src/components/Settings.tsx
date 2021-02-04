@@ -160,6 +160,10 @@ class Connection extends React.Component<any, any> {
     }
   }
 
+  SetCOMPort(path: string) {
+    this.setState({ comPort: path });
+  }
+
   render() {
     const {
       portList,
@@ -206,6 +210,9 @@ class Connection extends React.Component<any, any> {
                       <Dropdown.Item
                         key={String(index)}
                         active={comPort === port.path}
+                        onClick={() => {
+                          this.SetCOMPort(port.path);
+                        }}
                       >
                         {port.path}
                       </Dropdown.Item>
