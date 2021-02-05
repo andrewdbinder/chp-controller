@@ -4,7 +4,7 @@ Electron-based user-interface to control the [chp-lighting](https://github.com/a
 
 <img src="https://i.imgur.com/NmF2aXj.png" width="100%"/>
 
-## Setup
+## Development Setup
 
 Since a required dependency is hosted in another repository (as opposed to npm), some additional setup is needed before installing packages.
 
